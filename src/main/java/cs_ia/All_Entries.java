@@ -44,7 +44,8 @@ public class All_Entries {
 
     }
 
-    public static int linsearchString() {
+    // function to search the arraylist of String using linear search.
+    public int linearSearch(String name) {
         return 0;
     }
 
