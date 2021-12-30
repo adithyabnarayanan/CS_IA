@@ -114,6 +114,11 @@ public class HomePage extends javax.swing.JFrame {
         SignOutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SignOutButton.setBorderPainted(false);
         SignOutButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,12 +191,22 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginButton2ActionPerformed
 
     private void jLoginButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton3ActionPerformed
-        // TODO add your handling code here:
+        SavedEntriesIndividualPage p = new SavedEntriesIndividualPage();
+        this.dispose();
+        p.setVisible(true);
     }//GEN-LAST:event_jLoginButton3ActionPerformed
 
     private void jLoginButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton4ActionPerformed
-        // TODO add your handling code here:
+        MeetingSchedulePage mp = new MeetingSchedulePage();
+        this.dispose();
+        mp.setVisible(true);
     }//GEN-LAST:event_jLoginButton4ActionPerformed
+
+    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+        LoginPage l = new LoginPage();
+        this.dispose();
+        l.setVisible(true);
+    }//GEN-LAST:event_SignOutButtonActionPerformed
 
     /**
      * @param args the command line arguments
