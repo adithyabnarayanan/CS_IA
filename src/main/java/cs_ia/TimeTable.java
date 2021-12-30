@@ -15,7 +15,8 @@ public class TimeTable {
 
     }
 
-    // Returns row number and column number from the available time slot.
+    // Returns row number and column number from the available time slot from
+    // TimeTable.csv.
     public int[] getFreeTimeSlots() {
         return null;
     }
