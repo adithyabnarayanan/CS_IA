@@ -29,11 +29,11 @@ public class EntryPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        NameField = new javax.swing.JTextField();
+        SubjectField = new javax.swing.JTextField();
+        TopicField = new javax.swing.JTextField();
+        RQField = new javax.swing.JTextField();
+        DescField = new javax.swing.JTextField();
         jLoginButton = new javax.swing.JButton();
         jLoginButton1 = new javax.swing.JButton();
         jLoginButton2 = new javax.swing.JButton();
@@ -50,40 +50,40 @@ public class EntryPage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fill in the student's extended essay details below");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Student Name");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        NameField.setBackground(new java.awt.Color(255, 255, 255));
+        NameField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        NameField.setForeground(new java.awt.Color(0, 0, 0));
+        NameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        NameField.setText("Student Name");
+        NameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Description / Notes");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        SubjectField.setBackground(new java.awt.Color(255, 255, 255));
+        SubjectField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        SubjectField.setForeground(new java.awt.Color(0, 0, 0));
+        SubjectField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SubjectField.setText("Subject");
+        SubjectField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("Subject");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        TopicField.setBackground(new java.awt.Color(255, 255, 255));
+        TopicField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        TopicField.setForeground(new java.awt.Color(0, 0, 0));
+        TopicField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TopicField.setText("Topic");
+        TopicField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("Topic");
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        RQField.setBackground(new java.awt.Color(255, 255, 255));
+        RQField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        RQField.setForeground(new java.awt.Color(0, 0, 0));
+        RQField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RQField.setText("Research Question");
+        RQField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setText("Research Question");
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        DescField.setBackground(new java.awt.Color(255, 255, 255));
+        DescField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        DescField.setForeground(new java.awt.Color(0, 0, 0));
+        DescField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DescField.setText("Description / Notes");
+        DescField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLoginButton.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
@@ -138,12 +138,12 @@ public class EntryPage extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                                    .addComponent(TopicField)
+                                    .addComponent(SubjectField)
+                                    .addComponent(NameField)
+                                    .addComponent(RQField, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
                                 .addGap(33, 33, 33)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(DescField, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(42, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,14 +163,14 @@ public class EntryPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TopicField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField2))
+                        .addComponent(RQField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DescField))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,7 +194,17 @@ public class EntryPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
-        // TODO add your handling code here:
+        String Name = NameField.getText();
+        String RQ = RQField.getText();
+        String Subject = SubjectField.getText();
+        String Topic = TopicField.getText();
+        String Desc = DescField.getText();
+        int DefaultPriority = 1;
+        
+        Entry e = new Entry(Name, Subject, RQ, Topic, DefaultPriority, Desc);
+        
+        All_Entries.addEntry(e);
+        
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
     private void jLoginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton1ActionPerformed
@@ -241,16 +251,16 @@ public class EntryPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DescField;
+    private javax.swing.JTextField NameField;
+    private javax.swing.JTextField RQField;
+    private javax.swing.JTextField SubjectField;
+    private javax.swing.JTextField TopicField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jLoginButton;
     private javax.swing.JButton jLoginButton1;
     private javax.swing.JButton jLoginButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

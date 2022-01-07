@@ -11,18 +11,18 @@ package cs_ia;
 public class Entry {
     private String name;
     private String subject;
-    private String topic;
     private String rq;
+    private String topic;
     private String description;
     private int priority;
 
-    public Entry(String name, String subject, String topic, String rq, String description, int priority) {
+    public Entry(String name, String subject, String rq, String topic, int priority, String description) {
         this.name = name;
         this.subject = subject;
-        this.topic = topic;
         this.rq = rq;
-        this.description = description;
+        this.topic = topic;
         this.priority = priority;
+        this.description = description;
     }
 
     public String getName() {
@@ -37,20 +37,20 @@ public class Entry {
         this.subject = subject;
     }
 
-    public String getTopic() {
-        return this.topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
     public String getRq() {
         return this.rq;
     }
 
     public void setRq(String rq) {
         this.rq = rq;
+    }
+
+    public String getTopic() {
+        return this.topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public String getDescription() {
@@ -71,14 +71,14 @@ public class Entry {
 
     public String getPriorityText() {
         switch (this.priority) {
-        case 1:
-            return "Low";
-        case 2:
-            return "Medium";
-        case 3:
-            return "High";
-        default:
-            return "Unknown";
+            case 1:
+                return "Low";
+            case 2:
+                return "Medium";
+            case 3:
+                return "High";
+            default:
+                return "Unknown";
         }
     }
 

@@ -1,5 +1,7 @@
 package cs_ia;
 
+import java.time.LocalTime;
+
 public class TimeSlot {
 
     private int rowIndex; // 0 is monday, 1 is Tuesday... 4 is Friday
@@ -10,6 +12,9 @@ public class TimeSlot {
         this.rowIndex = rowIndex;
         this.colIndex = colIndex;
         this.StudentName = StudentName;
+    }
+
+    public TimeSlot(LocalTime startTime, LocalTime endTime) {
     }
 
     public int getRowIndex() {

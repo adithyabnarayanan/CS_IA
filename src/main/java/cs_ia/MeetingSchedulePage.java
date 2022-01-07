@@ -4,6 +4,8 @@
  */
 package cs_ia;
 
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Rony
@@ -15,6 +17,23 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
      */
     public MeetingSchedulePage() {
         initComponents();
+        DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
+        for (int i = 0; i <= 6; i++) {
+            dcbm.addElement(TimeSlot.fromColumnToIndexToTimeSlotString(i));
+        }
+        
+        TimePicker.setModel(dcbm);
+        
+        DefaultComboBoxModel dcbm2 = new DefaultComboBoxModel();
+        String[] StudentNames = All_Entries.extractNames();
+        for (int i = 0; i < StudentNames.length; i++) {
+            dcbm2.addElement(StudentNames[i]);
+        }
+        
+        NameComboBox.setModel(dcbm2);
+        
+        
+        
     }
 
     /**
@@ -30,13 +49,12 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jEmailField = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
         jTextField2 = new javax.swing.JTextField();
         jLoginButton1 = new javax.swing.JButton();
         jLoginButton2 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        NameComboBox = new javax.swing.JComboBox<>();
         jLoginButton3 = new javax.swing.JButton();
+        TimePicker = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,19 +71,7 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jEmailField.setBackground(new java.awt.Color(255, 255, 255));
-        jEmailField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jEmailField.setForeground(new java.awt.Color(0, 0, 0));
-        jEmailField.setText("Meeting Time");
-        jEmailField.setToolTipText("");
-        jEmailField.setBorder(null);
-        jEmailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jEmailFieldActionPerformed(evt);
-            }
-        });
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meeting 1", "Meeting 2", "Meeting 3", "Meeting  4" }));
 
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
@@ -95,10 +101,10 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
         jLoginButton2.setContentAreaFilled(false);
         jLoginButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NameComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        NameComboBox.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        NameComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        NameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name 1", "Name 2", "Name 3", "Name 4" }));
 
         jLoginButton3.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton3.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
@@ -112,6 +118,11 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
                 jLoginButton3ActionPerformed(evt);
             }
         });
+
+        TimePicker.setBackground(new java.awt.Color(255, 255, 255));
+        TimePicker.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        TimePicker.setForeground(new java.awt.Color(0, 0, 0));
+        TimePicker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9:10", "10:10" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,16 +140,14 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
                                 .addComponent(jLoginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jEmailField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addComponent(TimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
                         .addGap(12, 12, 12))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -155,28 +164,23 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLoginButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                                .addGap(11, 11, 11)))
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLoginButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(jLoginButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLoginButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)))
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLoginButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jLoginButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,17 +197,13 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jEmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmailFieldActionPerformed
+    private void jLoginButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jEmailFieldActionPerformed
+    }//GEN-LAST:event_jLoginButton3ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jLoginButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLoginButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,16 +241,15 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> NameComboBox;
+    private javax.swing.JComboBox<String> TimePicker;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JTextField jEmailField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jLoginButton1;
     private javax.swing.JButton jLoginButton2;
     private javax.swing.JButton jLoginButton3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

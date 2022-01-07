@@ -4,6 +4,8 @@
  */
 package cs_ia;
 
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Rony
@@ -15,6 +17,13 @@ public class EmailPage extends javax.swing.JFrame {
      */
     public EmailPage() {
         initComponents();
+        DefaultComboBoxModel dcbm2 = new DefaultComboBoxModel();
+        String[] StudentNames = All_Entries.extractNames();
+        for (int i = 0; i < StudentNames.length; i++) {
+            dcbm2.addElement(StudentNames[i]);
+        }
+        
+        NameComboBox.setModel(dcbm2);
     }
 
     /**
@@ -29,7 +38,7 @@ public class EmailPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        NameComboBox = new javax.swing.JComboBox<>();
         jEmailField = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jTextField2 = new javax.swing.JTextField();
@@ -48,10 +57,10 @@ public class EmailPage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Select a student and the application will automatically generate an email!");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NameComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        NameComboBox.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        NameComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        NameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jEmailField.setBackground(new java.awt.Color(255, 255, 255));
         jEmailField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
@@ -106,7 +115,7 @@ public class EmailPage extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +141,7 @@ public class EmailPage extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -202,7 +211,7 @@ public class EmailPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> NameComboBox;
     private javax.swing.JTextField jEmailField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
