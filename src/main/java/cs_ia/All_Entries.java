@@ -27,7 +27,7 @@ public class All_Entries {
         int count = 0;
         try {
             FileReader reader = new FileReader(
-                    "D:\\Code\\CS_IA\\src\\main\\java\\cs_ia\\Database.csv");
+                    "src\\main\\java\\cs_ia\\Database.csv");
             br = new BufferedReader(reader);
             String line = br.readLine();
             while (line != null) {
@@ -79,7 +79,7 @@ public class All_Entries {
     public static void addEntry(Entry entry) {
         String line = entry.getName() + "," + entry.getSubject() + "," + entry.getRq() + "," + entry.getTopic() + ","
                 + entry.getPriority() + "," + entry.getDescription();
-        File file = new File("D:\\Code\\CS_IA\\src\\main\\java\\cs_ia\\Database.csv");
+        File file = new File("src\\main\\java\\cs_ia\\Database.csv");
         FileWriter fw;
         try {
             fw = new FileWriter(file, true); // append at the end of the file
