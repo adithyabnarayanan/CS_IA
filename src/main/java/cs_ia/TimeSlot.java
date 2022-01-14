@@ -15,6 +15,9 @@ public class TimeSlot {
     }
 
     public TimeSlot(LocalTime startTime, LocalTime endTime) {
+        this.rowIndex = startTime.getHour();
+        this.colIndex = startTime.getMinute();`
+
     }
 
     public int getRowIndex() {

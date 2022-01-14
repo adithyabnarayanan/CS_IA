@@ -72,7 +72,6 @@ public class All_Entries {
 
     // To save all the rows of entries to the file.
     public void saveToCSV() {
-
     }
 
     // To add new entries to the file.
@@ -97,12 +96,37 @@ public class All_Entries {
 
     // To delete an entry from the file.
     public void deleteEntry(String name) {
-
+        File file = new File("src\\main\\java\\cs_ia\\Database.csv");
+        File tempFile = new File("src\\main\\java\\cs_ia\\temp.csv");
+        BufferedReader br = null;
+        PrintWriter pw = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+            pw = new PrintWriter(new FileWriter(tempFile));
+            String line = br.readLine();
+            while (line != null) {
+                String[] row = line.split(",", 6);
+                if (!row[0].equals(name)) {
+                    pw.println(line);
+                    pw.flush();
+                }
+                line = br.readLine();
+            }
+            pw.close();
+            br.close();
+            if (!file.delete()) {
+                System.out.println("Could not delete file");
+                return;
+            }
+            if (!tempFile.renameTo(file))
+                System.out.println("Could not rename file");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Java program for implementation of Selection Sort
     void sortString() {
-
     }
 
     public static int linsearchString() {

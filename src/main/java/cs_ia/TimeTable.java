@@ -11,7 +11,31 @@ public class TimeTable {
     private String[] strNextTwoWeeks = generateDateStringForTheNextTwoWeeks();
 
     public void loadTimeTable() {
-
+        try {
+            FileReader fr = new FileReader("src/main/java/cs_ia/TimeTable.txt");
+            int c;
+            String str = "";
+            while ((c = fr.read()) != -1) {
+                str += (char) c;
+            }
+            String[] strRows = str.split("\n");
+            for (int i = 0; i < strRows.length; i++) {
+                String[] strCols = strRows[i].split("\t");
+                for (int j = 0; j < strCols.length; j++) {
+                    if (strCols[j].equals("")) {
+                        continue;
+                    }
+                    String[] strTimeSlot = strCols[j].split("-");
+                    LocalTime startTime = LocalTime.parse(strTimeSlot[0], DateTimeFormatter.ofPattern("HH:mm"));
+                    LocalTime endTime = LocalTime.parse(strTimeSlot[1], DateTimeFormatter.ofPattern("HH:mm"));
+                    table[i][j] = new TimeSlot(startTime, endTime);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveTimeTable() {
@@ -82,15 +106,29 @@ public class TimeTable {
     }
 
     public boolean isReserved(int row, int col) {
+        if (table[row][col] != null) {
+            return true;
+        }
         return false;
     }
 
     public boolean isOccupied(int row, int col) {
+        if (table[row][col] != null && table[row][col].getStudentName() != null) {
+            return true;
+        }
         return false;
     }
 
     public String[][] generateTimeTableString(int row, int col) {
-        return null;
+        String[][] result = new String[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (table[i][j] != null) {
+                    result[i][j] = table[i][j].toString();
+                }
+            }
+        }
+        return result;
     }
 
 }

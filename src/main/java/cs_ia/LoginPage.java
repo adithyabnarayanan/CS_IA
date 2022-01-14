@@ -301,7 +301,7 @@ public class LoginPage extends javax.swing.JFrame {
         String line1 = null, line3 = null;
         try {
             FileReader reader = new FileReader(
-                    "D:\\Code\\CS_IA\\src\\main\\java\\cs_ia\\Credentials.txt");
+                    "src\\main\\java\\cs_ia\\Credentials.txt");
             br = new BufferedReader(reader);
             String line = br.readLine();
             while (line != null) {
@@ -385,7 +385,7 @@ public class LoginPage extends javax.swing.JFrame {
     // GEN-LAST:event_jLoginButtonActionPerformed
 
     private void jSignUpButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jSignUpButtonActionPerformed
-        File file = new File("D:\\Code\\CS_IA\\src\\main\\java\\cs_ia\\Credentials.txt");
+        File file = new File("src\\main\\java\\cs_ia\\Credentials.txt");
         FileWriter fw;
         try {
             fw = new FileWriter(file);
