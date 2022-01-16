@@ -358,7 +358,11 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
         }// </editor-fold>
 
         private void jLoginButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-                // TODO add your handling code here:
+                SavedEntriesTablePage j = new SavedEntriesTablePage();
+                this.dispose();
+                j.setLocationRelativeTo(null);
+                j.setVisible(true);
+                
         }
 
         private void jLoginButton4ActionPerformed(java.awt.event.ActionEvent evt) {

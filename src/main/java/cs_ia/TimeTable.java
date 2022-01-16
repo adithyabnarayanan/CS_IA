@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TimeTable {
-    private TimeSlot[][] table = new TimeSlot[10][7]; // Rows for day and columns for time slot.
+    private MeetingEvent[][] table = new MeetingEvent[10][7]; // Rows for day and columns for time slot.
     private String[] strNextTwoWeeks = generateDateStringForTheNextTwoWeeks();
 
     public void loadTimeTable() {
@@ -28,7 +28,7 @@ public class TimeTable {
                     String[] strTimeSlot = strCols[j].split("-");
                     LocalTime startTime = LocalTime.parse(strTimeSlot[0], DateTimeFormatter.ofPattern("HH:mm"));
                     LocalTime endTime = LocalTime.parse(strTimeSlot[1], DateTimeFormatter.ofPattern("HH:mm"));
-                    table[i][j] = new TimeSlot(startTime, endTime);
+                    table[i][j] = new MeetingEvent(startTime, endTime);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -78,7 +78,7 @@ public class TimeTable {
         return result;
     }
 
-    public TimeSlot[][] generateTimeTable() throws FileNotFoundException {
+    public MeetingEvent[][] generateTimeTable() throws FileNotFoundException {
         FileReader reader = new FileReader(TimeTable.class.getResource("TimeTable.csv").getFile());
         String[] lines = reader.toString().split("\n");
         for (int i = 0; i < lines.length; i++) {
@@ -87,7 +87,7 @@ public class TimeTable {
                 String[] timeSlot = line[j].split("-");
                 LocalTime startTime = LocalTime.parse(timeSlot[0]);
                 LocalTime endTime = LocalTime.parse(timeSlot[1]);
-                TimeSlot ts = new TimeSlot(startTime, endTime);
+                MeetingEvent ts = new MeetingEvent(startTime, endTime);
                 table[i][j] = ts;
             }
         }
