@@ -12,7 +12,7 @@ public class TimeTable {
 
     public void loadTimeTable() {
         try {
-            FileReader fr = new FileReader("src/main/java/cs_ia/TimeTable.txt");
+            FileReader fr = new FileReader("src/main/java/cs_ia/TimeTable.csv");
             int c;
             String str = "";
             while ((c = fr.read()) != -1) {
@@ -47,7 +47,15 @@ public class TimeTable {
     }
 
     public int[] getFreeTimeSlots() {
-        return null;
+        int[] freeTimeSlots = new int[7];
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (table[j][i] == null) {
+                    freeTimeSlots[i]++;
+                }
+            }
+        }
+        return freeTimeSlots;
     }
 
     public static String[] generateDateStringForTheNextTwoWeeks() {

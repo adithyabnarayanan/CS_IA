@@ -127,10 +127,28 @@ public class All_Entries {
 
     // Java program for implementation of Selection Sort
     void sortString() {
+        String[] ALL_NAMES = extractNames();
+        Arrays.sort(ALL_NAMES);
+        for (int i = 0; i < ALL_NAMES.length; i++) {
+            System.out.println(ALL_NAMES[i]);
+        }
     }
 
-    public static int linsearchString() {
-        return 0;
+    public static String linsearchString() {
+        String[] ALL_NAMES = extractNames();
+        String name = "";
+        boolean found = false;
+        for (int i = 0; i < ALL_NAMES.length; i++) {
+            if (ALL_NAMES[i].equals(name)) {
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            return "Found";
+        } else {
+            return "Not Found";
+        }
     }
 
     public static void main(String[] args) {

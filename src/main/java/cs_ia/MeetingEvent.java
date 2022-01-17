@@ -131,6 +131,8 @@ public class MeetingEvent {
                 AllMeetingEvents.add(meetingEvent);
                 line = br.readLine();
             }
+            br.close();
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in reading files after e.printStackTrace()");
