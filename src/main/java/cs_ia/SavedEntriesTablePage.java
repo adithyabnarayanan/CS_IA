@@ -4,42 +4,68 @@
  */
 package cs_ia;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Rony
  */
 public class SavedEntriesTablePage extends javax.swing.JFrame {
+    ArrayList<Entry> AllEntries;
 
     /**
      * Creates new form SavedEntriesTablePage
      */
     public SavedEntriesTablePage() {
+        AllEntries = All_Entries.getAllEntries();
         initComponents();
-        MeetingEvent.readMeetingEventsFile();
-        ArrayList<MeetingEvent> ME = MeetingEvent.getAllMeetingEvents();
-        String[] columnNames = new String[8];
-        columnNames[0] = "Date";
-
-        for (int i = 0; i < 7; i++) {
-            columnNames[i + 1] = MeetingEvent.fromColumnToIndexToTimeSlotString(i);
+        All_Entries.extractDetailsFromDatabaseCSV();
+        Object[][] data = new Object[AllEntries.size()][6];
+        for (int i = 0; i < AllEntries.size(); i++) {
+            data[i][0] = AllEntries.get(i).getName();
+            data[i][1] = AllEntries.get(i).getSubject();
+            data[i][2] = AllEntries.get(i).getRq();
+            data[i][3] = AllEntries.get(i).getTopic();
+            data[i][4] = AllEntries.get(i).getPriorityText();
+            data[i][5] = AllEntries.get(i).getDescription();
         }
+        String[] columnNames = { "Name", "Subject", "RQ", "Topic", "Priority", "Description" };
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
+            Boolean[] canEdit = new Boolean[] {
+                    false, false, false, false, false, false // makes table non-editable
+            };
 
-        LocalDate today = LocalDate.now();
-
-        for (int i = 0; i < ME.size(); i++) {
-            MeetingEvent M = ME.get(i);
-
-            if (M.getDate().compareTo(today) >= 0) {
-                // perform linear search
-
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return canEdit[column];
             }
-
-        }
-
+        });
     }
+
+    /*
+     * MeetingEvent.readMeetingEventsFile();
+     * ArrayList<MeetingEvent> ME = MeetingEvent.getAllMeetingEvents();
+     * String[] columnNames = new String[8];
+     * columnNames[0] = "Date";
+     * 
+     * for (int i = 0; i < 7; i++) {
+     * columnNames[i + 1] = MeetingEvent.fromColumnToIndexToTimeSlotString(i);
+     * }
+     * 
+     * LocalDate today = LocalDate.now();
+     * 
+     * for (int i = 0; i < ME.size(); i++) {
+     * MeetingEvent M = ME.get(i);
+     * 
+     * if (M.getDate().compareTo(today) >= 0) {
+     * // perform linear search
+     * 
+     * }
+     * 
+     * }
+     */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,11 +74,18 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        SortByPriority = new javax.swing.JMenu();
+        SortByStudent = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +119,35 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        SortByPriority.setText("Tools");
+        SortByPriority.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByPriorityActionPerformed(evt);
+            }
+        });
+
+        SortByStudent.setText("Sort by Student");
+        SortByStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByStudentActionPerformed(evt);
+            }
+        });
+        SortByPriority.add(SortByStudent);
+
+        jMenuItem2.setText("Sort by Priority");
+        SortByPriority.add(jMenuItem2);
+
+        jMenuBar1.add(SortByPriority);
+
+        jMenu2.setText("Edit");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,6 +162,40 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SortByStudentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SortByStudentActionPerformed
+        All_Entries.SortByName();
+        updateTable();
+    }// GEN-LAST:event_SortByStudentActionPerformed
+
+    private void updateTable() {
+        All_Entries.extractDetailsFromDatabaseCSV();
+        Object[][] data = new Object[AllEntries.size()][6];
+        for (int i = 0; i < AllEntries.size(); i++) {
+            data[i][0] = AllEntries.get(i).getName();
+            data[i][1] = AllEntries.get(i).getSubject();
+            data[i][2] = AllEntries.get(i).getRq();
+            data[i][3] = AllEntries.get(i).getTopic();
+            data[i][4] = AllEntries.get(i).getPriorityText();
+            data[i][5] = AllEntries.get(i).getDescription();
+        }
+
+        String[] columnNames = { "Name", "Subject", "RQ", "Topic", "Priority", "Description" };
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
+            Boolean[] canEdit = new Boolean[] {
+                    false, false, false, false, false, false // makes table non-editable
+            };
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return canEdit[column];
+            }
+        });
+    }
+
+    private void SortByPriorityActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SortByPriorityActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_SortByPriorityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,6 +241,12 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu SortByPriority;
+    private javax.swing.JMenuItem SortByStudent;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

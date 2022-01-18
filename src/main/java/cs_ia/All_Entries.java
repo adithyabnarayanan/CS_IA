@@ -23,6 +23,7 @@ public class All_Entries {
     private static ArrayList<Entry> entries = new ArrayList<>();
 
     public static void extractDetailsFromDatabaseCSV() {
+        entries = new ArrayList<Entry>();
         BufferedReader br = null;
         int count = 0;
         try {
@@ -131,6 +132,43 @@ public class All_Entries {
         Arrays.sort(ALL_NAMES);
         for (int i = 0; i < ALL_NAMES.length; i++) {
             System.out.println(ALL_NAMES[i]);
+        }
+    }
+
+    public static void SortByName() {
+        if (entries.size() == 0) {
+            extractDetailsFromDatabaseCSV();
+        }
+        // arr[i] vs entries.get(i)
+        // arr.length vs entries.size()
+        // arr[i] = 3 vs entries.set(i, SomeEntryObject)
+        for (int i = 0; i < entries.size() - 1; i++) {
+            int minindex = i;
+            for (int j = i + 1; j < entries.size(); j++) {
+                if (entries.get(j).getName().compareTo(entries.get(minindex).getName()) < 0) {
+                    minindex = j;
+                }
+            }
+            Entry temp = entries.get(i);
+            entries.set(i, entries.get(minindex));
+            entries.set(minindex, temp);
+        }
+    }
+
+    public static void SortByPriority() {
+        if (entries.size() == 0) {
+            extractDetailsFromDatabaseCSV();
+        }
+        for (int i = 0; i < entries.size() - 1; i++) {
+            int minindex = i;
+            for (int j = i + 1; j < entries.size(); j++) {
+                if (entries.get(j).getPriority() < entries.get(minindex).getPriority()) {
+                    minindex = j;
+                }
+            }
+            Entry temp = entries.get(i);
+            entries.set(i, entries.get(minindex));
+            entries.set(minindex, temp);
         }
     }
 
