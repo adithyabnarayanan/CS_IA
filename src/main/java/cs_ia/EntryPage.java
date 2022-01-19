@@ -4,11 +4,16 @@
  */
 package cs_ia;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rony
  */
 public class EntryPage extends javax.swing.JFrame {
+
+    private Component frame;
 
     /**
      * Creates new form EntryPage
@@ -43,51 +48,63 @@ public class EntryPage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Create a new entry");
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fill in the student's extended essay details below");
 
-        NameField.setBackground(new java.awt.Color(255, 255, 255));
         NameField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        NameField.setForeground(new java.awt.Color(0, 0, 0));
         NameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NameField.setText("Student Name");
         NameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        NameField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NameFieldMouseClicked(evt);
+            }
+        });
 
-        SubjectField.setBackground(new java.awt.Color(255, 255, 255));
         SubjectField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        SubjectField.setForeground(new java.awt.Color(0, 0, 0));
         SubjectField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SubjectField.setText("Subject");
         SubjectField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        SubjectField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SubjectFieldMouseClicked(evt);
+            }
+        });
 
-        TopicField.setBackground(new java.awt.Color(255, 255, 255));
         TopicField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        TopicField.setForeground(new java.awt.Color(0, 0, 0));
         TopicField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TopicField.setText("Topic");
         TopicField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        TopicField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TopicFieldMouseClicked(evt);
+            }
+        });
 
-        RQField.setBackground(new java.awt.Color(255, 255, 255));
         RQField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        RQField.setForeground(new java.awt.Color(0, 0, 0));
         RQField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         RQField.setText("Research Question");
         RQField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        RQField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RQFieldMouseClicked(evt);
+            }
+        });
 
-        DescField.setBackground(new java.awt.Color(255, 255, 255));
         DescField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        DescField.setForeground(new java.awt.Color(0, 0, 0));
         DescField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         DescField.setText("Description / Notes");
         DescField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        DescField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DescFieldMouseClicked(evt);
+            }
+        });
 
         jLoginButton.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton.setForeground(new java.awt.Color(0, 0, 0));
         jLoginButton.setText("Create");
         jLoginButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton.setContentAreaFilled(false);
@@ -100,7 +117,6 @@ public class EntryPage extends javax.swing.JFrame {
 
         jLoginButton1.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton1.setForeground(new java.awt.Color(0, 0, 0));
         jLoginButton1.setText("Button3");
         jLoginButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton1.setContentAreaFilled(false);
@@ -113,8 +129,7 @@ public class EntryPage extends javax.swing.JFrame {
 
         jLoginButton2.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jLoginButton2.setText("Button2");
+        jLoginButton2.setText("Clear");
         jLoginButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton2.setContentAreaFilled(false);
         jLoginButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -204,6 +219,7 @@ public class EntryPage extends javax.swing.JFrame {
         Entry e = new Entry(Name, Subject, RQ, Topic, DefaultPriority, Desc);
         
         All_Entries.addEntry(e);
+        JOptionPane.showMessageDialog(frame, "Account successfully created\nPlease restart the application!");
         
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
@@ -212,8 +228,32 @@ public class EntryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginButton1ActionPerformed
 
     private void jLoginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton2ActionPerformed
-        // TODO add your handling code here:
+        NameField.setText("Student Name");
+        SubjectField.setText("Subject");
+        TopicField.setText("Topic");
+        RQField.setText("Research Question");
+        DescField.setText("Description");
     }//GEN-LAST:event_jLoginButton2ActionPerformed
+
+    private void NameFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NameFieldMouseClicked
+        NameField.setText("");
+    }//GEN-LAST:event_NameFieldMouseClicked
+
+    private void SubjectFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubjectFieldMouseClicked
+        SubjectField.setText("");
+    }//GEN-LAST:event_SubjectFieldMouseClicked
+
+    private void TopicFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TopicFieldMouseClicked
+        TopicField.setText("");
+    }//GEN-LAST:event_TopicFieldMouseClicked
+
+    private void RQFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RQFieldMouseClicked
+        RQField.setText("");
+    }//GEN-LAST:event_RQFieldMouseClicked
+
+    private void DescFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DescFieldMouseClicked
+        DescField.setText("");
+    }//GEN-LAST:event_DescFieldMouseClicked
 
     /**
      * @param args the command line arguments

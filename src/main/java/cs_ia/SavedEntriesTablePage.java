@@ -31,7 +31,7 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
             data[i][4] = AllEntries.get(i).getPriorityText();
             data[i][5] = AllEntries.get(i).getDescription();
         }
-        String[] columnNames = { "Name", "Subject", "RQ", "Topic", "Priority", "Description" };
+        String[] columnNames = { "Name", "Subject", "Research Question", "Topic", "Priority", "Description" };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
             Boolean[] canEdit = new Boolean[] {
                     false, false, false, false, false, false // makes table non-editable
