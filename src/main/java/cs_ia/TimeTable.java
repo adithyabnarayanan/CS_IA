@@ -28,7 +28,7 @@ public class TimeTable {
                     String[] strTimeSlot = strCols[j].split("-");
                     LocalTime startTime = LocalTime.parse(strTimeSlot[0], DateTimeFormatter.ofPattern("HH:mm"));
                     LocalTime endTime = LocalTime.parse(strTimeSlot[1], DateTimeFormatter.ofPattern("HH:mm"));
-                    table[i][j] = new MeetingEvent(startTime, endTime);
+                    // table[i][j] = new MeetingEvent(startTime, endTime);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -95,8 +95,8 @@ public class TimeTable {
                 String[] timeSlot = line[j].split("-");
                 LocalTime startTime = LocalTime.parse(timeSlot[0]);
                 LocalTime endTime = LocalTime.parse(timeSlot[1]);
-                MeetingEvent ts = new MeetingEvent(startTime, endTime);
-                table[i][j] = ts;
+                // MeetingEvent ts = new MeetingEvent(startTime, endTime);
+                // table[i][j] = ts;
             }
         }
         return table;

@@ -18,6 +18,9 @@ public class HomePage extends javax.swing.JFrame {
 
     public HomePage() {
         initComponents();
+        All_Entries.extractDetailsFromDatabaseCSV();
+        All_Student_Meetings.readMeetingEventsFile();
+
     }
 
     public HomePage(String u) {

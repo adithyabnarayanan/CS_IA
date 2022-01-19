@@ -17,7 +17,6 @@ public class MeetingEvent {
     private LocalDate date;
     private int TimeSlotNo;
     private String MeetingNotes;
-    private static ArrayList<MeetingEvent> AllMeetingEvents = new ArrayList<MeetingEvent>();
 
     public MeetingEvent(String StudentName, LocalDate date, int TimeSlotNo, String MeetingNotes) {
         this.StudentName = StudentName;
@@ -63,10 +62,6 @@ public class MeetingEvent {
 
     public void setStudentName(String StudentName) {
         this.StudentName = StudentName;
-    }
-
-    public static ArrayList<MeetingEvent> getAllMeetingEvents() {
-        return AllMeetingEvents;
     }
 
     public static String fromColumnToIndexToTimeSlotString(int columnIndex) {
@@ -119,57 +114,9 @@ public class MeetingEvent {
         return dayString;
     }
 
-    public static void readMeetingEventsFile() {
-        try {
-            FileReader reader = new FileReader("src\\main\\java\\cs_ia\\MeetingEvents.csv");
-            BufferedReader br = new BufferedReader(reader);
-            String line = br.readLine();
-            while (line != null) {
-                String[] row = line.split(",", 4);
-                MeetingEvent meetingEvent = new MeetingEvent(row[0], LocalDate.parse(row[1]), Integer.parseInt(row[2]),
-                        row[3]);
-                AllMeetingEvents.add(meetingEvent);
-                line = br.readLine();
-            }
-            br.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error in reading files after e.printStackTrace()");
-        }
-    }
-
-    public static void writeMeetingEventsFile() {
-        File file = new File("src\\main\\java\\cs_ia\\MeetingEvents.csv");
-        FileWriter fw;
-        try {
-            fw = new FileWriter(file, true); // append at the end of the file
-            PrintWriter pw = new PrintWriter(fw);
-
-            for (int i = 0; i < AllMeetingEvents.size(); i++) {
-                pw.println(AllMeetingEvents.get(i).getStudentName() + "," + AllMeetingEvents.get(i).getDate() + ","
-                        + AllMeetingEvents.get(i).getTimeSlotNo() + "," + AllMeetingEvents.get(i).getMeetingNotes());
-            }
-
-            pw.close();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     public String toString() {
         return "\n" + "Student Name: " + this.StudentName + "\n" + "Date: " + this.date + "\n" + "Time Slot: "
                 + fromColumnToIndexToTimeSlotString(this.TimeSlotNo) + "\n" + "Meeting Notes: " + this.MeetingNotes;
-    }
-
-    public static void main(String[] args) {
-        readMeetingEventsFile();
-        System.out.println(AllMeetingEvents.toString());
-        System.out.println("---------------------------------------");
-        AllMeetingEvents.add(new MeetingEvent("John", LocalDate.of(2019, 12, 12), 0, ""));
-        System.out.println(AllMeetingEvents.toString());
-        // System.out.println(AllMeetingEvents);
     }
 
 }

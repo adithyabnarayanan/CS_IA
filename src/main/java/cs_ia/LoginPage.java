@@ -366,6 +366,7 @@ public class LoginPage extends javax.swing.JFrame {
         if (username.equals("admin") && pwd.equals("abc")) {
             HomePage h = new HomePage(username);
             this.dispose();
+            h.setLocationRelativeTo(null);
             h.setVisible(true);
             JOptionPane.showMessageDialog(null, "login successful");
         }
@@ -373,6 +374,7 @@ public class LoginPage extends javax.swing.JFrame {
         else if (username.equals(arr[0]) && pwd.equals(arr[1])) {
             HomePage h = new HomePage(username);
             this.dispose();
+            h.setLocationRelativeTo(null);
             h.setVisible(true);
             JOptionPane.showMessageDialog(null, "login successful");
         }
@@ -438,7 +440,9 @@ public class LoginPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPage().setVisible(true);
+                LoginPage l = new LoginPage();
+                l.setLocationRelativeTo(null);
+                l.setVisible(true);
             }
         });
     }

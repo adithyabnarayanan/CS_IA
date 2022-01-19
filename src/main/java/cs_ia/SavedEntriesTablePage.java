@@ -4,6 +4,7 @@
  */
 package cs_ia;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -21,27 +22,7 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     public SavedEntriesTablePage() {
         AllEntries = All_Entries.getAllEntries();
         initComponents();
-        All_Entries.extractDetailsFromDatabaseCSV();
-        Object[][] data = new Object[AllEntries.size()][6];
-        for (int i = 0; i < AllEntries.size(); i++) {
-            data[i][0] = AllEntries.get(i).getName();
-            data[i][1] = AllEntries.get(i).getSubject();
-            data[i][2] = AllEntries.get(i).getRq();
-            data[i][3] = AllEntries.get(i).getTopic();
-            data[i][4] = AllEntries.get(i).getPriorityText();
-            data[i][5] = AllEntries.get(i).getDescription();
-        }
-        String[] columnNames = { "Name", "Subject", "Research Question", "Topic", "Priority", "Description" };
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
-            Boolean[] canEdit = new Boolean[] {
-                    false, false, false, false, false, false // makes table non-editable
-            };
-
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return canEdit[column];
-            }
-        });
+        updateTable();
     }
 
     /*
@@ -75,54 +56,54 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        SortByPriority = new javax.swing.JMenu();
+        Menu = new javax.swing.JMenu();
         SortByStudent = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        SortByPriority = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        Exit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null, null, null, null },
-                        { null, null, null, null, null, null, null, null },
-                        { null, null, null, null, null, null, null, null },
-                        { null, null, null, null, null, null, null, null }
-                },
-                new String[] {
-                        "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "null", "null"
-                }) {
-            Class[] types = new Class[] {
-                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                    java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "null", "null"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false, false, false, false
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(jTable1);
 
-        SortByPriority.setText("Tools");
-        SortByPriority.addActionListener(new java.awt.event.ActionListener() {
+        Menu.setText("Tools");
+        Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortByPriorityActionPerformed(evt);
+                MenuActionPerformed(evt);
             }
         });
 
@@ -132,17 +113,27 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
                 SortByStudentActionPerformed(evt);
             }
         });
-        SortByPriority.add(SortByStudent);
+        Menu.add(SortByStudent);
 
-        jMenuItem2.setText("Sort by Priority");
-        SortByPriority.add(jMenuItem2);
+        SortByPriority.setText("Sort by Priority");
+        SortByPriority.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByPriorityActionPerformed(evt);
+            }
+        });
+        Menu.add(SortByPriority);
 
-        jMenuBar1.add(SortByPriority);
+        jMenuBar1.add(Menu);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Options");
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Exit);
 
         jMenuBar1.add(jMenu2);
 
@@ -151,17 +142,30 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SortByPriorityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByPriorityActionPerformed
+        All_Entries.SortByPriority();
+        updateTable();
+    }//GEN-LAST:event_SortByPriorityActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+            HomePage h = new HomePage();
+            this.dispose();
+            h.setLocationRelativeTo(null);
+            h.setVisible(true);
+    }//GEN-LAST:event_ExitActionPerformed
 
     private void SortByStudentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SortByStudentActionPerformed
         All_Entries.SortByName();
@@ -169,7 +173,6 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     }// GEN-LAST:event_SortByStudentActionPerformed
 
     private void updateTable() {
-        All_Entries.extractDetailsFromDatabaseCSV();
         Object[][] data = new Object[AllEntries.size()][6];
         for (int i = 0; i < AllEntries.size(); i++) {
             data[i][0] = AllEntries.get(i).getName();
@@ -180,7 +183,7 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
             data[i][5] = AllEntries.get(i).getDescription();
         }
 
-        String[] columnNames = { "Name", "Subject", "RQ", "Topic", "Priority", "Description" };
+        String[] columnNames = { "Name", "Subject", "Research Question", "Topic", "Priority", "Description" };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
             Boolean[] canEdit = new Boolean[] {
                     false, false, false, false, false, false // makes table non-editable
@@ -192,10 +195,6 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
             }
         });
     }
-
-    private void SortByPriorityActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SortByPriorityActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_SortByPriorityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,12 +240,12 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu SortByPriority;
+    private javax.swing.JMenuItem Exit;
+    private javax.swing.JMenu Menu;
+    private javax.swing.JMenuItem SortByPriority;
     private javax.swing.JMenuItem SortByStudent;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
