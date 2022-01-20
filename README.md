@@ -8,6 +8,7 @@ open the "CS_IA" folder in any ide of choice
 
 go to src/main and run LoginPage.java
 
+also prob won't work on mac/linux rn cuz file paths
 
 ## Info and Some stuf
 ```
