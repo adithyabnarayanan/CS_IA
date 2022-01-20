@@ -61,6 +61,11 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         DescField = new javax.swing.JTextArea();
         Home = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,17 +73,13 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("View Saved Entries");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Priority:");
 
-        StudentNameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         StudentNameComboBox.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        StudentNameComboBox.setForeground(new java.awt.Color(0, 0, 0));
         StudentNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student 1", "Student 2" }));
         StudentNameComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,37 +87,28 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
             }
         });
 
-        SubjectField.setBackground(new java.awt.Color(255, 255, 255));
         SubjectField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        SubjectField.setForeground(new java.awt.Color(0, 0, 0));
         SubjectField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SubjectField.setText("Subject");
         SubjectField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
         jTextField4.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.setText("Meeting Time");
         jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        rqField.setBackground(new java.awt.Color(255, 255, 255));
         rqField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        rqField.setForeground(new java.awt.Color(0, 0, 0));
         rqField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         rqField.setText("Research Question");
         rqField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        TopicField.setBackground(new java.awt.Color(255, 255, 255));
         TopicField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        TopicField.setForeground(new java.awt.Color(0, 0, 0));
         TopicField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TopicField.setText("Topic");
         TopicField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLoginButton2.setBackground(new java.awt.Color(255, 255, 255));
         jLoginButton2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton2.setForeground(new java.awt.Color(0, 0, 0));
         jLoginButton2.setText("Table");
         jLoginButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton2.setContentAreaFilled(false);
@@ -129,15 +121,18 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
 
         jLoginButton3.setBackground(new java.awt.Color(255, 255, 255));
         jLoginButton3.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jLoginButton3.setText("Update");
+        jLoginButton3.setText("Update Entry");
         jLoginButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton3.setContentAreaFilled(false);
         jLoginButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLoginButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLoginButton3ActionPerformed(evt);
+            }
+        });
 
         jLoginButton4.setBackground(new java.awt.Color(255, 255, 255));
         jLoginButton4.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton4.setForeground(new java.awt.Color(0, 0, 0));
         jLoginButton4.setText("Create New");
         jLoginButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton4.setContentAreaFilled(false);
@@ -150,8 +145,7 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
 
         jLoginButton5.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton5.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jLoginButton5.setText("Update");
+        jLoginButton5.setText("Delete Entry");
         jLoginButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton5.setContentAreaFilled(false);
         jLoginButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -161,20 +155,15 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
             }
         });
 
-        Priority.setBackground(new java.awt.Color(255, 255, 255));
         Priority.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        Priority.setForeground(new java.awt.Color(0, 0, 0));
         Priority.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Low", "Medium", "High" }));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Select a student to view all the details");
 
-        DescField.setBackground(new java.awt.Color(255, 255, 255));
         DescField.setColumns(20);
         DescField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        DescField.setForeground(new java.awt.Color(0, 0, 0));
         DescField.setLineWrap(true);
         DescField.setRows(5);
         DescField.setText("Description / Notes");
@@ -262,6 +251,36 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenu1.setText("Options");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Update Entry (W.I.P.)");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Delete Entry (W.I.P.)");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Create New Entry");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -295,13 +314,6 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
                 j.setVisible(true);
     }//GEN-LAST:event_jLoginButton2ActionPerformed
 
-    private void jLoginButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton4ActionPerformed
-                EntryPage e = new EntryPage();
-                this.dispose();
-                e.setLocationRelativeTo(null);
-                e.setVisible(true);
-    }//GEN-LAST:event_jLoginButton4ActionPerformed
-
     private void jLoginButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jLoginButton5ActionPerformed
@@ -312,6 +324,32 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
         h.setLocationRelativeTo(null);
         h.setVisible(true);
     }//GEN-LAST:event_HomeMouseClicked
+
+    private void jLoginButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton4ActionPerformed
+        EntryPage e = new EntryPage();
+        this.dispose();
+        e.setLocationRelativeTo(null);
+        e.setVisible(true);
+    }//GEN-LAST:event_jLoginButton4ActionPerformed
+
+    private void jLoginButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLoginButton3ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        EntryPage e = new EntryPage();
+        this.dispose();
+        e.setLocationRelativeTo(null);
+        e.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,6 +401,11 @@ public class SavedEntriesIndividualPage extends javax.swing.JFrame {
     private javax.swing.JButton jLoginButton3;
     private javax.swing.JButton jLoginButton4;
     private javax.swing.JButton jLoginButton5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField4;

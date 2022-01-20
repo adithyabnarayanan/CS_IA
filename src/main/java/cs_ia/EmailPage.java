@@ -4,13 +4,19 @@
  */
 package cs_ia;
 
+import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.datatransfer.*;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Rony
  */
 public class EmailPage extends javax.swing.JFrame {
+
+    private Component frame;
 
     /**
      * Creates new form EmailPage
@@ -25,6 +31,8 @@ public class EmailPage extends javax.swing.JFrame {
         }
         
         NameComboBox.setModel(dcbm2);
+        int SelectedIndex = NameComboBox.getSelectedIndex();
+
     }
 
     /**
@@ -42,31 +50,31 @@ public class EmailPage extends javax.swing.JFrame {
         NameComboBox = new javax.swing.JComboBox<>();
         jEmailField = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
         jLoginButton1 = new javax.swing.JButton();
         jLoginButton2 = new javax.swing.JButton();
         Home = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DescField = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Email Generator");
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Select a student and the application will automatically generate an email!");
 
-        NameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         NameComboBox.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        NameComboBox.setForeground(new java.awt.Color(0, 0, 0));
         NameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NameComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameComboBoxActionPerformed(evt);
+            }
+        });
 
-        jEmailField.setBackground(new java.awt.Color(255, 255, 255));
         jEmailField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jEmailField.setForeground(new java.awt.Color(0, 0, 0));
         jEmailField.setText("Email");
         jEmailField.setToolTipText("");
         jEmailField.setBorder(null);
@@ -76,29 +84,20 @@ public class EmailPage extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Click generate to generate email");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         jLoginButton1.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jLoginButton1.setText("Copy");
+        jLoginButton1.setText("Copy to Clipboard");
         jLoginButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton1.setContentAreaFilled(false);
         jLoginButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLoginButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLoginButton1ActionPerformed(evt);
+            }
+        });
 
         jLoginButton2.setBackground(new java.awt.Color(226, 226, 226));
         jLoginButton2.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        jLoginButton2.setForeground(new java.awt.Color(0, 0, 0));
         jLoginButton2.setText("Generate");
         jLoginButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLoginButton2.setContentAreaFilled(false);
@@ -109,6 +108,14 @@ public class EmailPage extends javax.swing.JFrame {
                 HomeMouseClicked(evt);
             }
         });
+
+        DescField.setColumns(20);
+        DescField.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        DescField.setLineWrap(true);
+        DescField.setRows(5);
+        DescField.setWrapStyleWord(true);
+        DescField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(DescField);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,16 +128,16 @@ public class EmailPage extends javax.swing.JFrame {
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLoginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLoginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1))))
                 .addGap(12, 12, 12))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -157,9 +164,9 @@ public class EmailPage extends javax.swing.JFrame {
                     .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLoginButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jLoginButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
@@ -184,16 +191,26 @@ public class EmailPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jEmailFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
         HomePage h = new HomePage();
         this.dispose();
         h.setLocationRelativeTo(null);
         h.setVisible(true);
     }//GEN-LAST:event_HomeMouseClicked
+
+    private void NameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameComboBoxActionPerformed
+        int SelectedIndex = NameComboBox.getSelectedIndex();
+        Entry SelectedEntry = All_Entries.getAllEntries().get(SelectedIndex);
+        DescField.setText("Hello " + SelectedEntry.getName() + "! \n I am writing you this email to invite you to a meeting with me regarding your " + SelectedEntry.getSubject() + "Extended Essay on the topic of " + SelectedEntry.getTopic() + ". You currently have a " + SelectedEntry.getPriorityText() + "priority for your EE. \n Hope to see you soon!");
+    }//GEN-LAST:event_NameComboBoxActionPerformed
+
+    private void jLoginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButton1ActionPerformed
+        String ctc = DescField.getText().toString();
+        StringSelection stringSelection = new StringSelection(ctc);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
+        JOptionPane.showMessageDialog(frame, "Copied the message to clipboard!");
+    }//GEN-LAST:event_jLoginButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,6 +248,7 @@ public class EmailPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea DescField;
     private javax.swing.JLabel Home;
     private javax.swing.JComboBox<String> NameComboBox;
     private javax.swing.JTextField jEmailField;
@@ -239,7 +257,7 @@ public class EmailPage extends javax.swing.JFrame {
     private javax.swing.JButton jLoginButton1;
     private javax.swing.JButton jLoginButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

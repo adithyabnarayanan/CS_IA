@@ -373,10 +373,10 @@ public class LoginPage extends javax.swing.JFrame {
 
         else if (username.equals(arr[0]) && pwd.equals(arr[1])) {
             HomePage h = new HomePage(username);
+            JOptionPane.showMessageDialog(null, "login successful");
             this.dispose();
             h.setLocationRelativeTo(null);
             h.setVisible(true);
-            JOptionPane.showMessageDialog(null, "login successful");
         }
 
         else {

@@ -248,7 +248,7 @@ public class EntryPage extends javax.swing.JFrame {
         Entry e = new Entry(Name, Subject, RQ, Topic, DefaultPriority, Desc);
         
         All_Entries.addEntry(e);
-        JOptionPane.showMessageDialog(frame, "Account successfully created\nPlease restart the application!");
+        JOptionPane.showMessageDialog(frame, "New entry successfully created\nView the saved entries by clicking *View Saved Entries*!");
         
     }//GEN-LAST:event_jLoginButtonActionPerformed
 

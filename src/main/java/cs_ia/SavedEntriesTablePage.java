@@ -70,8 +70,6 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -101,11 +99,6 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         Menu.setText("Tools");
-        Menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuActionPerformed(evt);
-            }
-        });
 
         SortByStudent.setText("Sort by Student");
         SortByStudent.addActionListener(new java.awt.event.ActionListener() {

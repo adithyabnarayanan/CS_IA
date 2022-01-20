@@ -204,6 +204,7 @@ public class HomePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Entry page button
     private void jNewEntryButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jNewEntryButtonActionPerformed
         EntryPage e = new EntryPage();
         this.dispose();
