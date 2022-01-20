@@ -139,9 +139,7 @@ public class All_Entries {
         if (entries.size() == 0) {
             extractDetailsFromDatabaseCSV();
         }
-        // arr[i] vs entries.get(i)
-        // arr.length vs entries.size()
-        // arr[i] = 3 vs entries.set(i, SomeEntryObject)
+
         System.out.println(entries.size());
         for (int i = 0; i < entries.size() - 1; i++) {
             int minindex = i;
@@ -161,9 +159,7 @@ public class All_Entries {
         if (entries.size() == 0) {
             extractDetailsFromDatabaseCSV();
         }
-        // arr[i] vs entries.get(i)
-        // arr.length vs entries.size()
-        // arr[i] = 3 vs entries.set(i, SomeEntryObject)
+
         System.out.println("Inside SortByTopic " + entries.size());
         for (int i = 0; i < entries.size() - 1; i++) {
             int minindex = i;
