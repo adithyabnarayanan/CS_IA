@@ -56,6 +56,7 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -64,7 +65,9 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         SortByStudent = new javax.swing.JMenuItem();
+        SortByStudentDescending = new javax.swing.JMenuItem();
         SortByPriority = new javax.swing.JMenuItem();
+        SortByPriorityDesc = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Exit = new javax.swing.JMenuItem();
 
@@ -100,7 +103,7 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
 
         Menu.setText("Tools");
 
-        SortByStudent.setText("Sort by Student");
+        SortByStudent.setText("Sort by Student Ascending");
         SortByStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SortByStudentActionPerformed(evt);
@@ -108,13 +111,29 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
         });
         Menu.add(SortByStudent);
 
-        SortByPriority.setText("Sort by Priority");
+        SortByStudentDescending.setText("Sort by Student Descending");
+        SortByStudentDescending.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByStudentDescendingActionPerformed(evt);
+            }
+        });
+        Menu.add(SortByStudentDescending);
+
+        SortByPriority.setText("Sort by Priority  Ascending");
         SortByPriority.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SortByPriorityActionPerformed(evt);
             }
         });
         Menu.add(SortByPriority);
+
+        SortByPriorityDesc.setText("Sorty by Priority Descending");
+        SortByPriorityDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByPriorityDescActionPerformed(evt);
+            }
+        });
+        Menu.add(SortByPriorityDesc);
 
         jMenuBar1.add(Menu);
 
@@ -148,20 +167,30 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SortByPriorityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByPriorityActionPerformed
-        All_Entries.SortByPriority();
+    private void SortByStudentDescendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByStudentDescendingActionPerformed
+        All_Entries.SortByNameDesc();
         updateTable();
-    }//GEN-LAST:event_SortByPriorityActionPerformed
+    }//GEN-LAST:event_SortByStudentDescendingActionPerformed
 
-    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-            HomePage h = new HomePage();
-            this.dispose();
-            h.setLocationRelativeTo(null);
-            h.setVisible(true);
-    }//GEN-LAST:event_ExitActionPerformed
+    private void SortByPriorityDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByPriorityDescActionPerformed
+        All_Entries.SortByPriorityDesc();
+        updateTable();
+    }//GEN-LAST:event_SortByPriorityDescActionPerformed
+
+    private void SortByPriorityActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SortByPriorityActionPerformed
+        All_Entries.SortByPriorityAsc();
+        updateTable();
+    }// GEN-LAST:event_SortByPriorityActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ExitActionPerformed
+        HomePage h = new HomePage();
+        this.dispose();
+        h.setLocationRelativeTo(null);
+        h.setVisible(true);
+    }// GEN-LAST:event_ExitActionPerformed
 
     private void SortByStudentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SortByStudentActionPerformed
-        All_Entries.SortByName();
+        All_Entries.SortByNameAsc();
         updateTable();
     }// GEN-LAST:event_SortByStudentActionPerformed
 
@@ -236,7 +265,9 @@ public class SavedEntriesTablePage extends javax.swing.JFrame {
     private javax.swing.JMenuItem Exit;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem SortByPriority;
+    private javax.swing.JMenuItem SortByPriorityDesc;
     private javax.swing.JMenuItem SortByStudent;
+    private javax.swing.JMenuItem SortByStudentDescending;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

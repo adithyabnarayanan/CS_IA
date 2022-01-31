@@ -20,6 +20,15 @@ public class All_Student_Meetings {
         meetings = m;
     }
 
+    public static boolean checkIfBusy(LocalDate date, int TimeSlotNo) {
+        for (MeetingEvent m : meetings) {
+            if (m.getDate().equals(date) && m.getTimeSlotNo() == TimeSlotNo) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void readMeetingEventsFile() {
         try {
             FileReader reader = new FileReader("src\\main\\java\\cs_ia\\MeetingEvents.csv");

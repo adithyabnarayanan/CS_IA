@@ -114,6 +114,11 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
         UpdateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         UpdateButton.setContentAreaFilled(false);
         UpdateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateButtonActionPerformed(evt);
+            }
+        });
 
         NameComboBox.setBackground(new java.awt.Color(255, 255, 255));
         NameComboBox.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
@@ -248,6 +253,10 @@ public class MeetingSchedulePage extends javax.swing.JFrame {
             h.setLocationRelativeTo(null);
             h.setVisible(true);
     }//GEN-LAST:event_HomeMouseClicked
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateButtonActionPerformed
 
     private void MeetingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MeetingComboBoxActionPerformed
         // Check if meeting number for the selected student exists or not

@@ -11,18 +11,34 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="SortByStudent">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sort by Student"/>
+                <Property name="text" type="java.lang.String" value="Sort by Student Ascending"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortByStudentActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="SortByStudentDescending">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sort by Student Descending"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortByStudentDescendingActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="SortByPriority">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sort by Priority"/>
+                <Property name="text" type="java.lang.String" value="Sort by Priority  Ascending"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortByPriorityActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="SortByPriorityDesc">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sorty by Priority Descending"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortByPriorityDescActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

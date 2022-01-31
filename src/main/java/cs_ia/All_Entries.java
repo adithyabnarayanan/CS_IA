@@ -67,12 +67,30 @@ public class All_Entries {
     }
 
     public static ArrayList<Entry> getAllEntries() {
-        extractDetailsFromDatabaseCSV();
+        // extractDetailsFromDatabaseCSV();
         return entries;
     }
 
     // To save all the rows of entries to the file.
-    public void saveToCSV() {
+    public static void saveToCSV() {
+        File file = new File("src\\main\\java\\cs_ia\\Database.csv");
+        FileWriter fw;
+        try {
+            fw = new FileWriter(file, false); // append at the end of the file
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println("Name,Subject,RQ,Topic,Priority,Desc");
+            for (Entry entry : entries) {
+                String line = entry.getName() + "," + entry.getSubject() + "," + entry.getRq() + "," + entry.getTopic()
+                        + ","
+                        + entry.getPriority() + "," + entry.getDescription();
+                pw.println(line);
+            }
+
+            pw.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     // To add new entries to the file.
@@ -96,34 +114,13 @@ public class All_Entries {
     }
 
     // To delete an entry from the file.
-    public void deleteEntry(String name) {
-        File file = new File("src\\main\\java\\cs_ia\\Database.csv");
-        File tempFile = new File("src\\main\\java\\cs_ia\\temp.csv");
-        BufferedReader br = null;
-        PrintWriter pw = null;
-        try {
-            br = new BufferedReader(new FileReader(file));
-            pw = new PrintWriter(new FileWriter(tempFile));
-            String line = br.readLine();
-            while (line != null) {
-                String[] row = line.split(",", 6);
-                if (!row[0].equals(name)) {
-                    pw.println(line);
-                    pw.flush();
-                }
-                line = br.readLine();
+    public static void deleteEntry(String name) {
+        for (int i = 0; i < entries.size(); i++) {
+            if (entries.get(i).getName().equals(name)) {
+                entries.remove(i);
             }
-            pw.close();
-            br.close();
-            if (!file.delete()) {
-                System.out.println("Could not delete file");
-                return;
-            }
-            if (!tempFile.renameTo(file))
-                System.out.println("Could not rename file");
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        saveToCSV();
     }
 
     // Java program for implementation of Selection Sort
@@ -135,7 +132,7 @@ public class All_Entries {
         }
     }
 
-    public static void SortByName() {
+    public static void SortByNameAsc() {
         if (entries.size() == 0) {
             extractDetailsFromDatabaseCSV();
         }
@@ -144,7 +141,29 @@ public class All_Entries {
         for (int i = 0; i < entries.size() - 1; i++) {
             int minindex = i;
             for (int j = i + 1; j < entries.size(); j++) {
-                if (entries.get(j).getName().compareTo(entries.get(minindex).getName()) < 0) {
+                if (entries.get(j).getName().toUpperCase()
+                        .compareTo(entries.get(minindex).getName().toUpperCase()) < 0) {
+                    minindex = j;
+                }
+            }
+
+            Entry temp = entries.get(i);
+            entries.set(i, entries.get(minindex));
+            entries.set(minindex, temp);
+        }
+    }
+
+    public static void SortByNameDesc() {
+        if (entries.size() == 0) {
+            extractDetailsFromDatabaseCSV();
+        }
+
+        System.out.println(entries.size());
+        for (int i = 0; i < entries.size() - 1; i++) {
+            int minindex = i;
+            for (int j = i + 1; j < entries.size(); j++) {
+                if (entries.get(j).getName().toUpperCase()
+                        .compareTo(entries.get(minindex).getName().toUpperCase()) > 0) {
                     minindex = j;
                 }
             }
@@ -175,7 +194,7 @@ public class All_Entries {
         }
     }
 
-    public static void SortByPriority() {
+    public static void SortByPriorityAsc() {
         if (entries.size() == 0) {
             extractDetailsFromDatabaseCSV();
         }
@@ -183,6 +202,23 @@ public class All_Entries {
             int minindex = i;
             for (int j = i + 1; j < entries.size(); j++) {
                 if (entries.get(j).getPriority() < entries.get(minindex).getPriority()) {
+                    minindex = j;
+                }
+            }
+            Entry temp = entries.get(i);
+            entries.set(i, entries.get(minindex));
+            entries.set(minindex, temp);
+        }
+    }
+
+    public static void SortByPriorityDesc() {
+        if (entries.size() == 0) {
+            extractDetailsFromDatabaseCSV();
+        }
+        for (int i = 0; i < entries.size() - 1; i++) {
+            int minindex = i;
+            for (int j = i + 1; j < entries.size(); j++) {
+                if (entries.get(j).getPriority() > entries.get(minindex).getPriority()) {
                     minindex = j;
                 }
             }
